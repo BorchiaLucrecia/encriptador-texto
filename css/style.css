@@ -171,10 +171,10 @@ header{
 @media screen and (max-width: 800px){
     .contenedores{
         grid-template-columns: 1fr;
-        grid-template-rows: 75% ;
+       /* grid-template-rows: 75% ;*/
         width: auto;
         margin: auto 40px;
-        align-items: flex-start;
+        align-items: flex-end;
     }
     
     .botones{
@@ -203,6 +203,11 @@ header{
         grid-template-columns: 1fr;
     }
 
+    .seccion-secundario{
+        height: min-content;
+        width: 100%;
+    }
+
     .boton-encriptar,
     .boton-desencriptar{
         max-width: 100%;
@@ -211,10 +216,14 @@ header{
     
     .caja-texto{
         font-size: 30px; 
-        height: 250px;
+        height: 380px;
+        width: 100%;
     }
 
     .footer{
+        color:#495057;
+        width: 100%;
+        padding: 10px;
         align-items: flex-end;
     }
 }
