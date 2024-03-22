@@ -218,6 +218,7 @@ header{
         font-size: 30px; 
         height: 380px;
         width: 100%;
+        overflow-y: hidden;
     }
 
     .footer{

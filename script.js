@@ -1,3 +1,4 @@
+
 const ingresoTxt = document.getElementById("ingresoTxt");
 const btEncriptar = document.getElementById("btEncriptar");
 const btDesencriptar = document.getElementById("btDesencriptar");
@@ -7,7 +8,7 @@ const munheco = document.getElementById("munheco");
 const info = document.getElementById("info");
 const seccionSecundario = document.getElementById("seccionSecundario");
 
-const regex = /[^a-zA-Z0-9\s]/;
+const regex = /[^a-z0-9\s]/;
 
 let reemplazar = [
     ["a", "ai"],
@@ -42,7 +43,11 @@ btEncriptar.addEventListener("click", () => {
     const texto = ingresoTxt.value.toLowerCase();
     if(texto !=""){
         if(regex.test(texto)){
-            alert("El texto no debe contener caracteres especiales ni acentos.");
+            Swal.fire({
+             icon:"error", 
+             title:"Oops...", 
+             text:"El texto no debe contener caracteres especiales ni acentos."
+            });
             return;
         }
 
@@ -68,7 +73,11 @@ btEncriptar.addEventListener("click", () => {
         };
         replace (encriptar(texto));
     }else{
-        alert("Ingrese texto a encriptar");
+        Swal.fire({ 
+            icon:"error", 
+            title:"Oops...", 
+            text:"Ingrese texto a encriptar, en minúscula y sin acento ."
+        });
         limpiar();
     }
 });
@@ -77,20 +86,28 @@ btDesencriptar.addEventListener("click", () =>{
     const texto = ingresoTxt.value.toLowerCase();
     if(texto != ""){
         if(regex.test(texto)){
-            alert("El texto no debe contener caracteres especiales ni acentos.");
+            Swal.fire({ 
+                icon:"error", 
+                title:"Oops...",
+                text:"El texto no debe contener caracteres especiales ni acentos."
+            });
             return;
         }
         function desencriptar(newTxt) {
             for(let i = 0; i< reemplazar.length; i++) {
                 if(newTxt.includes(reemplazar[i][1])){
-                        newTxt = newTxt.replaceAll(reemplazar[i][1],reemplazar[i][0]);
+                    newTxt = newTxt.replaceAll(reemplazar[i][1],reemplazar[i][0]);
                 };
             };
             return newTxt
         };
         replace(desencriptar(texto));
     }else{
-        alert("Ingrese texto a desencriptar");
+        Swal.fire({ 
+            icon:"error", 
+            title:"Oops...",
+            text:"Ingrese texto a desencriptar"
+        });
         limpiar();
     }
 });
